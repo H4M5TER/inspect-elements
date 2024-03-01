@@ -1,0 +1,3 @@
+commands:
+  elements:
+    description: 检视平台消息被解析成了什么样的消息元素，支持回复

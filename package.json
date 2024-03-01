@@ -1,21 +1,34 @@
 {
   "name": "koishi-plugin-inspect-elements",
-  "description": "",
-  "version": "0.0.1",
+  "description": "Inspect elements on platform message",
+  "version": "1.0.2",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "src/index.ts",
   "files": [
     "lib",
-    "dist"
+    "src"
   ],
   "license": "MIT",
-  "scripts": {},
+  "repository": "https://github.com/H4M5TER/koishi-plugin-inspect-elements.git",
+  "author": {
+    "name": "H4M5TER",
+    "email": "h4m5ter@outlook.com"
+  },
+  "koishi": {
+    "browser": false,
+    "description": {
+      "en": "Inspect elements on platform message",
+      "zh": "检视平台消息被解析成了什么样的消息元素"
+    },
+    "locales": [
+      "zh"
+    ]
+  },
   "keywords": [
     "chatbot",
     "koishi",
     "plugin"
   ],
-  "devDependencies": {},
   "peerDependencies": {
     "koishi": "^4.17.1"
   }
