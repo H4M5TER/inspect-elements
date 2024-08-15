@@ -1,4 +1,4 @@
-import { Context, Schema } from 'koishi'
+import { Context, h, Schema } from 'koishi'
 import { inspect } from 'util'
 
 export const name = 'inspect-elements'
@@ -14,6 +14,18 @@ export function apply(ctx: Context) {
     .action(({ session }) => {
       let { elements, quote } = session
       if (quote) elements = quote.elements
-      return inspect(elements, { depth: Infinity })
+      const jsons = []
+      elements = elements.map((element) => {
+        if (element.type === 'json') {
+          jsons.push(JSON.parse(element.attrs.data))
+          element.attrs.data = `[JSON ${jsons.length}]`
+        }
+        return element
+      })
+      let result = inspect(elements, { depth: Infinity })
+      if (jsons.length) {
+        result += '\n\n' + jsons.map((data, index) => `[JSON ${index + 1}]: ${inspect(data, { depth: Infinity })}`).join('\n\n')
+      }
+      return h.text(result)
     })
 }
